@@ -2,10 +2,11 @@ const mongoose = require("mongoose");
 
 mongoose.connect("mongodb+srv://admin:admin@cluster0.h4dzasn.mongodb.net/");
 
-const Date = require("./models/date");
+const Datetime = require("./models/datetime");
 
 const main = async () => {
-    const date = new Date({ date: "10/12/2023" });
+    const dateSave = new Date();
+    const date = new Datetime({ datetime: dateSave });
     await date.save();
     mongoose.connection.close();
 };
