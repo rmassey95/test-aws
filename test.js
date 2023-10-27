@@ -6,13 +6,13 @@ const Datetime = require("./models/datetime");
 const cron = require("node-cron");
 
 const updateTime = async () => {
-    mongoose.connect(mongodbURI);
+    await mongoose.connect(mongodbURI);
 
     const dateSave = new Date();
     const date = new Datetime({ datetime: dateSave });
     await date.save();
 
-    mongoose.connection.close();
+    await mongoose.connection.close();
 };
 
 cron.schedule("* * * * *", updateTime);
